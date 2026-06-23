@@ -1,5 +1,4 @@
 import { Icon } from '../utils/icons';
-import { MonetagBanner } from '../components/Monetag';
 
 export const HomePage = ({ onNavigate, currentUser, scripts }) => {
   return (
@@ -19,8 +18,6 @@ export const HomePage = ({ onNavigate, currentUser, scripts }) => {
           Cari Script Sekarang
         </button>
       </section>
-
-      <MonetagBanner placement="top-banner" />
 
       <section className="mb-12 text-center">
         <h2 className="text-2xl font-bold text-white mb-6">

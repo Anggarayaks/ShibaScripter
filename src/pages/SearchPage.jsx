@@ -1,6 +1,5 @@
 import { useState, useMemo } from 'react';
 import { Icon } from '../utils/icons';
-import { MonetagBanner, MonetagSidebar } from '../components/Monetag';
 
 export const SearchPage = ({
   scripts = [],
@@ -42,13 +41,8 @@ export const SearchPage = ({
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-        {/* Sidebar Ads */}
-        <div className="lg:col-span-1 hidden lg:block">
-          <MonetagSidebar />
-        </div>
-
         {/* Main Content */}
-        <div className="lg:col-span-3">
+        <div className="lg:col-span-4">
           {!scripts || scripts.length === 0 ? (
             <div className="text-center py-12">
               <p className="text-[#8B949E] mb-4">Belum ada script yang diunggah</p>

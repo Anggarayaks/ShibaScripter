@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Icon } from '../utils/icons';
-import { MonetagBanner } from '../components/Monetag';
 
 export const DetailPage = ({
   script,
@@ -64,8 +63,6 @@ export const DetailPage = ({
           </div>
         </div>
       </div>
-
-      <MonetagBanner placement="middle-detail" />
 
       {/* Code Block */}
       <div className="bg-[#0D1117] border border-[#30363D] rounded-2xl overflow-hidden mb-6">
