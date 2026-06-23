@@ -1,6 +1,12 @@
-self.options = {
-    "domain": "3nbf4.com",
-    "zoneId": 11191751
-}
-self.lary = ""
-importScripts('https://3nbf4.com/act/files/service-worker.min.js?r=sw')
+// Basic Service Worker for PWA
+self.addEventListener('install', event => {
+  console.log('Service Worker installed');
+});
+
+self.addEventListener('activate', event => {
+  console.log('Service Worker activated');
+});
+
+self.addEventListener('fetch', event => {
+  // Placeholder untuk future cache strategies
+});
