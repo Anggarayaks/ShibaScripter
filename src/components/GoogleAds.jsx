@@ -18,7 +18,7 @@ export const GoogleAdBanner = ({ placement = 'banner' }) => {
         className="adsbygoogle"
         style={{ display: 'block', width: '100%' }}
         data-ad-client="ca-pub-3953419818034992"
-        data-ad-slot="1234567890"
+        data-ad-slot="3643390207"
         data-ad-format="horizontal"
         data-full-width-responsive="true"
       />
@@ -44,7 +44,7 @@ export const GoogleAdSidebar = () => {
         className="adsbygoogle"
         style={{ display: 'block' }}
         data-ad-client="ca-pub-3953419818034992"
-        data-ad-slot="0987654321"
+        data-ad-slot="3312217710"
         data-ad-format="vertical"
         data-full-width-responsive="true"
       />
