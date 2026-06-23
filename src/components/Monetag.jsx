@@ -3,12 +3,18 @@ import { useEffect } from 'react';
 
 export const MonetagBanner = ({ placement = 'banner' }) => {
   useEffect(() => {
-    // Trigger Monetag script untuk memproses iklan
-    if (window.mntag && window.mntag.showads) {
-      window.mntag.showads();
-    } else if (window.mntag) {
-      window.mntag.mount();
-    }
+    // Delay untuk memastikan DOM sudah siap
+    const timeout = setTimeout(() => {
+      if (window.mntag) {
+        try {
+          window.mntag.showads?.();
+        } catch (e) {
+          console.warn('Monetag showads error:', e);
+        }
+      }
+    }, 100);
+    
+    return () => clearTimeout(timeout);
   }, [placement]);
 
   return (
@@ -26,12 +32,18 @@ export const MonetagBanner = ({ placement = 'banner' }) => {
 
 export const MonetagSidebar = () => {
   useEffect(() => {
-    // Trigger Monetag script untuk memproses iklan
-    if (window.mntag && window.mntag.showads) {
-      window.mntag.showads();
-    } else if (window.mntag) {
-      window.mntag.mount();
-    }
+    // Delay untuk memastikan DOM sudah siap
+    const timeout = setTimeout(() => {
+      if (window.mntag) {
+        try {
+          window.mntag.showads?.();
+        } catch (e) {
+          console.warn('Monetag showads error:', e);
+        }
+      }
+    }, 100);
+    
+    return () => clearTimeout(timeout);
   }, []);
 
   return (
