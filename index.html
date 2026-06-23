@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShibaScripter - Script Sharing Platform</title>
+  
+  <!-- Monetag Ads -->
+  <meta name="monetag" content="0d087840206a27bd08f84c4fff509b41">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Monetag Service Worker -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('https://5gvci.com/act/files/service-worker.min.js?r=sw')
+        .then(reg => console.log('✅ Monetag Service Worker berhasil didaftar'))
+        .catch(err => console.log('❌ Monetag Service Worker error:', err));
+    }
+  </script>
+
+  <!-- Monetag Script Utama -->
+  <script async src="https://a.5gvci.com/act/files/a.js?r=1"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+</html>
