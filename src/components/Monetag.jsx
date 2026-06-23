@@ -1,6 +1,16 @@
 import { Icon } from '../utils/icons';
+import { useEffect } from 'react';
 
 export const MonetagBanner = ({ placement = 'banner' }) => {
+  useEffect(() => {
+    // Trigger Monetag script untuk memproses iklan
+    if (window.mntag && window.mntag.showads) {
+      window.mntag.showads();
+    } else if (window.mntag) {
+      window.mntag.mount();
+    }
+  }, [placement]);
+
   return (
     <div className="monetag-ad-container">
       <div className="ads-label">📢 Iklan Bersponsor Monetag</div>
@@ -15,6 +25,15 @@ export const MonetagBanner = ({ placement = 'banner' }) => {
 };
 
 export const MonetagSidebar = () => {
+  useEffect(() => {
+    // Trigger Monetag script untuk memproses iklan
+    if (window.mntag && window.mntag.showads) {
+      window.mntag.showads();
+    } else if (window.mntag) {
+      window.mntag.mount();
+    }
+  }, []);
+
   return (
     <div className="bg-[#161B22] border border-[#30363D] p-4 rounded-lg">
       <div className="ads-label">📢 Iklan Samping</div>
