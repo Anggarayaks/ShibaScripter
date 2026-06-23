@@ -1,14 +1,19 @@
 import { createClient } from '@supabase/supabase-js'
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
-const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY
-
-console.log('SUPABASE_URL =', supabaseUrl)
-console.log('SUPABASE_KEY =', supabaseKey)
+// Menggunakan VITE_SUPABASE_KEY sesuai dengan file .env yang kita buat kemarin
+const supabaseKey = import.meta.env.VITE_SUPABASE_KEY
 
 if (!supabaseUrl || !supabaseKey) {
   console.error('Missing Supabase configuration. Please check your .env file.')
 }
+
+// Tambahkan BARIS SAKTI INI di sini untuk mengaktifkan koneksi databasenya!
+const supabase = createClient(supabaseUrl, supabaseKey)
+
+// Kode di bawah ini jangan diubah (biarkan tetap sama):
+// Auth methods
+export const authService = {
 
 // Auth methods
 export const authService = {
