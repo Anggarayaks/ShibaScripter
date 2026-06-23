@@ -15,12 +15,18 @@
 
   <!-- Monetag Service Worker -->
   <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('https://5gvci.com/act/files/service-worker.min.js?r=sw')
-        .then(reg => console.log('✅ Monetag Service Worker berhasil didaftar'))
-        .catch(err => console.log('❌ Monetag Service Worker error:', err));
-    }
-  </script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('/sw.js') // Sesuaikan nama file jika bukan sw.js
+        .then(function(registration) {
+          console.log('Service Worker berhasil didaftarkan dengan scope: ', registration.scope);
+        })
+        .catch(function(err) {
+          console.log('Pendaftaran Service Worker gagal: ', err);
+        });
+    });
+  }
+</script>
 
   <!-- Monetag Script Utama -->
   <script async src="https://a.5gvci.com/act/files/a.js?r=1"></script>
