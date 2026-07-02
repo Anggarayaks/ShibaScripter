@@ -2,7 +2,7 @@
   {
     "id": 1,
     "title": "Script A",
-    "description": "Deskripsi lengkap tentang script ini...",
+    "description": "test kon",
     "image": "url_gambar_script.jpg",
     "script": "print('Hello World')",
     "key": "SHIBA-123",
@@ -11,7 +11,7 @@
   {
     "id": 2,
     "title": "Script B",
-    "description": "Deskripsi script keren lainnya...",
+    "description": "Deskripsi konto",
     "image": "url_gambar_script_2.jpg",
     "script": "print('Test')",
     "key": "SHIBA-456",
