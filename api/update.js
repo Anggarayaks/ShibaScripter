@@ -2,7 +2,7 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ message: 'Method tidak diizinkan' });
 
   const { dataBaru } = req.body;
-  const token = process.env.GITHUB_TOKEN;
+  const token = process.env.GITHUB_TOKEN;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
   const repo = 'Anggarayaks/ShibaScripter';
   const path = 'database.json';
 
