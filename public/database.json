@@ -1,1 +1,20 @@
-tets
+[
+  {
+    "id": 1,
+    "title": "Script A",
+    "description": "Deskripsi lengkap tentang script ini...",
+    "image": "url_gambar_script.jpg",
+    "script": "print('Hello World')",
+    "key": "SHIBA-123",
+    "views": 9500
+  },
+  {
+    "id": 2,
+    "title": "Script B",
+    "description": "Deskripsi script keren lainnya...",
+    "image": "url_gambar_script_2.jpg",
+    "script": "print('Test')",
+    "key": "SHIBA-456",
+    "views": 10500
+  }
+]
