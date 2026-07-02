@@ -1,6 +1,9 @@
 import { Icon } from '../utils/icons';
 
 export const DashboardPage = ({ currentUser, scripts = [], onBack, onViewScript, onDeleteScript, onNavigate }) => {
+  // 1. Safety Check: Jika data belum ada, jangan crash
+  if (!currentUser) return <div className="text-white text-center py-20">Memuat profil...</div>;
+
   const totalDownloads = scripts.reduce((sum, s) => sum + (s.downloads || 0), 0);
   const totalLikes = scripts.reduce((sum, s) => sum + (s.likes || 0), 0);
 
@@ -13,13 +16,14 @@ export const DashboardPage = ({ currentUser, scripts = [], onBack, onViewScript,
       {/* User Card */}
       <div className="bg-[#161B22] border border-[#30363D] p-6 rounded-2xl mb-8">
         <div className="flex items-center gap-4">
+          {/* Tambahkan fallback avatar agar tidak error jika gambar tidak ada */}
           <img
-            src={currentUser.avatar}
+            src={currentUser.avatar || 'https://via.placeholder.com/64'}
             className="w-16 h-16 rounded-full border border-blue-500"
             alt="avatar"
           />
           <div>
-            <h1 className="text-2xl font-bold text-white">{currentUser.username}</h1>
+            <h1 className="text-2xl font-bold text-white">{currentUser.username || 'User'}</h1>
             <p className="text-sm text-[#8B949E]">{currentUser.email}</p>
             <span
               className={`text-xs px-3 py-1 rounded font-bold ${
@@ -28,7 +32,7 @@ export const DashboardPage = ({ currentUser, scripts = [], onBack, onViewScript,
                   : 'bg-blue-500/20 text-blue-400'
               }`}
             >
-              {currentUser.role}
+              {currentUser.role || 'USER'}
             </span>
           </div>
         </div>
@@ -50,14 +54,14 @@ export const DashboardPage = ({ currentUser, scripts = [], onBack, onViewScript,
         </div>
       </div>
 
-      {/* Admin Mode Banner */}
+      {/* Admin Mode Banner - Pastikan role dicek dengan benar */}
       {currentUser.role === 'ADMIN' && (
         <div className="bg-amber-500/10 border border-amber-500/20 p-6 rounded-2xl mb-8">
           <div className="flex justify-between items-center">
             <div>
               <h2 className="text-lg font-bold text-amber-400 mb-1">Mode Admin</h2>
               <p className="text-sm text-amber-300">
-                Anda dapat mengunggah dan mengelola script baru di platform.
+                Anda dapat mengunggah dan mengelola script baru.
               </p>
             </div>
             <button
@@ -82,16 +86,10 @@ export const DashboardPage = ({ currentUser, scripts = [], onBack, onViewScript,
                 <h3 className="font-bold text-white">{s.title}</h3>
                 <p className="text-xs text-[#8B949E] mt-1">{s.description}</p>
                 <div className="flex gap-2 mt-3">
-                  <button
-                    onClick={() => onViewScript(s)}
-                    className="flex-grow bg-blue-600 text-white px-3 py-1 rounded text-xs font-bold hover:bg-blue-500"
-                  >
+                  <button onClick={() => onViewScript(s)} className="flex-grow bg-blue-600 text-white px-3 py-1 rounded text-xs font-bold hover:bg-blue-500">
                     Lihat
                   </button>
-                  <button
-                    onClick={() => onDeleteScript(s.id)}
-                    className="bg-red-600 text-white px-3 py-1 rounded text-xs font-bold hover:bg-red-500 flex gap-1 items-center justify-center"
-                  >
+                  <button onClick={() => onDeleteScript(s.id)} className="bg-red-600 text-white px-3 py-1 rounded text-xs font-bold hover:bg-red-500 flex gap-1 items-center justify-center">
                     <Icon name="trash" size={12} />
                     Hapus
                   </button>
