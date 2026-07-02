@@ -5,7 +5,7 @@ export default async function handler(req, res) {
   }
 
   const { dataBaru } = req.body;
-  const token = process.env.GITHUB_TOKEN; // Ini diambil dari Environment Variables di Vercel
+  const token = process.env.GITHUB_TOKEN; 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
   const repo = 'Anggarayaks/ShibaScripter';
   const path = 'database.json';
 
@@ -25,7 +25,6 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         message: "Update database via admin panel",
-        // Mengubah objek JSON menjadi Base64 karena GitHub API butuh format itu
         content: btoa(unescape(encodeURIComponent(JSON.stringify(dataBaru, null, 2)))),
         sha: fileInfo.sha // SHA ini wajib ada agar GitHub tahu file mana yang diupdate
       })
