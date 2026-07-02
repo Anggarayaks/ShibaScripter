@@ -1,0 +1,19 @@
+async function submitData() {
+    // Ambil data dari input form Anda
+    const dataBaru = {
+        title: document.getElementById('title').value,
+        description: document.getElementById('desc').value,
+        image_url: document.getElementById('img').value,
+        // ... field lainnya
+    };
+
+    // Kirim ke backend yang baru kita buat
+    const response = await fetch('/api/update', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ dataBaru }) // Ini mengirim data ke update.js
+    });
+    
+    const result = await response.json();
+    alert(result.message); // Akan muncul alert "Database berhasil diupdate!"
+}
