@@ -1,20 +1,16 @@
-[
-  {
-    "id": 1,
-    "title": "Script A",
-    "description": "test kon",
-    "image": "url_gambar_script.jpg",
-    "script": "print('Hello World')",
-    "key": "SHIBA-123",
-    "views": 9500
-  },
-  {
-    "id": 2,
-    "title": "Script B",
-    "description": "Deskripsi konto",
-    "image": "url_gambar_script_2.jpg",
-    "script": "print('Test')",
-    "key": "SHIBA-456",
-    "views": 10500
-  }
-]
+{
+  "scripts": [
+    {
+      "id": 1,
+      "title": "Grow a Garden 2",
+      "description": "Auto farm",
+      "image_url": "https://link-gambar-anda.com/gambar.jpg",
+      "category": "Roblox",
+      "tags": ["roblox", "grow a garden"],
+      "status": "working",
+      "views": 10000,
+      "likes": 0,
+      "last_updated": "2026-07-03"
+    }
+  ]
+}
