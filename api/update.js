@@ -1,22 +1,25 @@
 export default async function handler(req, res) {
-  // 1. Pastikan hanya metode POST yang bisa akses
-  if (req.method !== 'POST') {
-    return res.status(405).json({ message: 'Method tidak diizinkan' });
-  }
+  if (req.method !== 'POST') return res.status(405).json({ message: 'Method tidak diizinkan' });
 
   const { dataBaru } = req.body;
-  const token = process.env.GITHUB_TOKEN; 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
+  const token = process.env.GITHUB_TOKEN;
   const repo = 'Anggarayaks/ShibaScripter';
   const path = 'database.json';
 
   try {
-    // 2. Ambil informasi file database.json saat ini (termasuk SHA)
+    // 1. Ambil data lama
     const getRes = await fetch(`https://api.github.com/repos/${repo}/contents/${path}`, {
       headers: { 'Authorization': `Bearer ${token}` }
     });
     const fileInfo = await getRes.json();
+    
+    // Decode konten lama dari Base64
+    const contentLama = JSON.parse(decodeURIComponent(escape(atob(fileInfo.content))));
 
-    // 3. Update file ke GitHub
+    // 2. Gabungkan data (Data lama + Data baru)
+    contentLama.scripts.push(dataBaru);
+
+    // 3. Update ke GitHub
     const updateRes = await fetch(`https://api.github.com/repos/${repo}/contents/${path}`, {
       method: 'PUT',
       headers: {
@@ -24,17 +27,16 @@ export default async function handler(req, res) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        message: "Update database via admin panel",
-        content: btoa(unescape(encodeURIComponent(JSON.stringify(dataBaru, null, 2)))),
-        sha: fileInfo.sha // SHA ini wajib ada agar GitHub tahu file mana yang diupdate
+        message: "Tambah script baru ke database",
+        content: btoa(unescape(encodeURIComponent(JSON.stringify(contentLama, null, 2)))),
+        sha: fileInfo.sha
       })
     });
 
     if (updateRes.ok) {
-      res.status(200).json({ message: 'Database berhasil diupdate!' });
+      res.status(200).json({ message: 'Script berhasil ditambahkan!' });
     } else {
-      const errorData = await updateRes.json();
-      res.status(500).json({ message: 'Gagal update ke GitHub', detail: errorData });
+      res.status(500).json({ message: 'Gagal update' });
     }
   } catch (error) {
     res.status(500).json({ message: error.message });
