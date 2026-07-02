@@ -4,7 +4,7 @@ export default async function handler(req, res) {
   const { dataBaru } = req.body;
   const token = process.env.GITHUB_TOKEN; // jan di apa apain ya
   const repo = 'Anggarayaks/ShibaScripter';
-  const path = 'database.json';
+  const path = 'api/database.json';
 
   try {
     const getRes = await fetch(`https://api.github.com/repos/${repo}/contents/${path}`, {
