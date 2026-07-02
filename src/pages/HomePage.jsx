@@ -1,45 +1,41 @@
-import { useState, useEffect } from 'react';
 import { Icon } from '../utils/icons';
 
-export const HomePage = ({ onNavigate }) => {
+export const HomePage = ({ onNavigate, currentUser, scripts }) => {
   return (
     <main className="max-w-7xl mx-auto px-4 py-12 flex-grow">
-      {/* Hero Section yang Disederhanakan */}
-      <section className="text-center mb-16">
-        <h1 className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tight">
-          Pusat Script & Executor <br/> <span className="text-blue-500">Terpercaya</span>
+      <section className="text-center mb-16 bg-gradient-to-b from-blue-950/20 to-transparent p-8 md:p-12 rounded-3xl border border-[#30363D]">
+        <h1 className="text-3xl md:text-5xl font-black text-white mb-4">
+          Cari, Salin, dan Jalankan Script Premium
         </h1>
-        <p className="text-[#8B949E] text-lg max-w-xl mx-auto mb-10">
-          Temukan ribuan script premium dan executor terbaik yang sudah teruji keamanannya.
+        <p className="text-sm md:text-base text-[#8B949E] max-w-2xl mx-auto">
+          Platform sharing script terbaik dengan koleksi lengkap
         </p>
-
-        {/* Pemisah Menu */}
-        <div className="flex justify-center gap-4">
-          <button 
-            onClick={() => onNavigate('scripts')}
-            className="bg-blue-600 hover:bg-blue-500 text-white px-8 py-4 rounded-xl font-bold flex items-center gap-2 transition-transform hover:scale-105"
-          >
-            <Icon name="code" /> Jelajahi Script
-          </button>
-          <button 
-            onClick={() => onNavigate('executors')}
-            className="bg-[#21262D] hover:bg-[#30363D] text-white px-8 py-4 rounded-xl font-bold border border-[#30363D] flex items-center gap-2"
-          >
-            <Icon name="download" /> Lihat Executor
-          </button>
-        </div>
+        <button
+          onClick={() => onNavigate('search')}
+          className="mt-6 bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-lg font-bold flex gap-2 items-center mx-auto"
+        >
+          <Icon name="search" size={18} />
+          Cari Script Sekarang
+        </button>
       </section>
 
-      {/* Grid Kategori Cepat */}
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-        <div className="p-6 bg-[#0D1117] border border-[#30363D] rounded-2xl">
-          <h3 className="text-white font-bold text-xl mb-2">🔥 Trending Script</h3>
-          <p className="text-[#8B949E] text-sm">Update harian script paling banyak digunakan.</p>
-        </div>
-        <div className="p-6 bg-[#0D1117] border border-[#30363D] rounded-2xl">
-          <h3 className="text-white font-bold text-xl mb-2">⚡ Executor Terbaru</h3>
-          <p className="text-[#8B949E] text-sm">Versi terbaru executor untuk performa maksimal.</p>
-        </div>
+      <section className="mb-12 text-center">
+        <h2 className="text-2xl font-bold text-white mb-6">
+          {scripts && scripts.length > 0 ? `${scripts.length} Script Tersedia` : 'Belum Ada Script'}
+        </h2>
+        <p className="text-[#8B949E]">
+          {scripts && scripts.length > 0
+            ? 'Jelajahi dan temukan script yang Anda cari'
+            : 'Login dan upload script Anda sekarang untuk memulai!'}
+        </p>
+        {!currentUser && (
+          <button
+            onClick={() => onNavigate('login')}
+            className="mt-4 bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-lg font-bold"
+          >
+            Login Sekarang
+          </button>
+        )}
       </section>
     </main>
   );
