@@ -4,8 +4,7 @@ import { Icon } from '../utils/icons';
 export const HomePage = ({ onNavigate }) => {
   const [scripts, setScripts] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  // Mengambil data dari file JSON di folder public
+  
   useEffect(() => {
     fetch('/scripts.json')
       .then((res) => res.json())
@@ -44,7 +43,7 @@ export const HomePage = ({ onNavigate }) => {
           {loading ? 'Memuat...' : `${scripts.length} Script Tersedia`}
         </h2>
         <p className="text-[#8B949E]">
-          Jelajahi, pilih game, dan temukan script terbaik untuk kebutuhanmu.
+          Jelajahi, pilih game, dan temukan script terbaik untuk kebutuhanmu. tets
         </p>
       </section>
     </main>
